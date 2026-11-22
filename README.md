@@ -16,6 +16,13 @@ O ESP32 lê o controle e manda um **pacote binário de tamanho fixo** para o
 micro:bit (nada de JSON/strings), e recebe comandos curtos para
 **vibração** e **lightbar**.
 
+## Repositórios
+
+| Repositório | Conteúdo |
+|---|---|
+| [`dualbit-bridge`](https://github.com/ThiagoAlmeidaSiqueira/dualbit-bridge) | monorepo: firmware, extensão, docs e ferramentas |
+| [`pxt-dualbit-bridge`](https://github.com/ThiagoAlmeidaSiqueira/pxt-dualbit-bridge) | **apenas a extensão**, com `pxt.json` na raiz — é esta URL que você cola no MakeCode |
+
 ---
 
 ## Estrutura do repositório
@@ -138,26 +145,23 @@ USB ID   : 054c:09cc
 
 ### 2.1 Importar no MakeCode
 
-**Opção A — GitHub (recomendado)**
+A extensão está publicada em um repositório próprio, com o `pxt.json` na
+raiz (exigência do MakeCode):
 
-O MakeCode espera o `pxt.json` na **raiz** do repositório importado. Como
-aqui ele está em `extension/`, publique essa pasta como um repositório
-próprio:
+**https://github.com/ThiagoAlmeidaSiqueira/pxt-dualbit-bridge**
 
-```bash
-cd extension
-git init
-git add .
-git commit -m "DualBit Bridge extension"
-git remote add origin https://github.com/SEU_USUARIO/pxt-dualbit-bridge.git
-git push -u origin main
-```
+No MakeCode (micro:bit): **Extensões → GitHub** → cole a URL acima.
 
-Depois, no MakeCode (micro:bit): **Extensões → GitHub** → cole
-`https://github.com/SEU_USUARIO/pxt-dualbit-bridge`.
+O monorepo deste projeto fica em:
+**https://github.com/ThiagoAlmeidaSiqueira/dualbit-bridge**
 
-> Alternativa: importar o repositório grande com o caminho da subpasta —
-> `https://github.com/SEU_USUARIO/BitPad/extension`.
+> O repositório da extensão é derivado da pasta `extension/` via
+> `git subtree split`. Para re-sincronizar depois de alterar a extensão:
+>
+> ```bash
+> git subtree split --prefix=extension -b pxt-publish
+> git push pxt pxt-publish:main --force
+> ```
 
 **Opção B — editor local**
 
