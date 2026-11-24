@@ -163,6 +163,10 @@ O monorepo deste projeto fica em:
 > git push pxt pxt-publish:main --force
 > ```
 
+> **Atenção:** mantenha `extension/pxt.json` em UTF-8 **sem BOM**. Um BOM no
+> início do arquivo faz o `JSON.parse` do MakeCode falhar e a extensão
+> aparece como inexistente no diálogo de Extensões.
+
 **Opção B — editor local**
 
 1. Clone o repositório do MakeCode (`makecode.microbit.org` → *Explore*).
